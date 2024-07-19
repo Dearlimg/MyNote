@@ -1,0 +1,54 @@
+1.时间复杂度:
+就是一个程序的执行次数与输入之间的关系,一般来说只与最高项的次方有关.
+表述方式:O(n);
+推导方式:
+  1.用常数1代替常数加法;
+    2.保留最高项;
+  3.最高项不是1就变1;
+  
+
+2.线性表:零个或多个数据元素的有限序列.
+
+3.链表操作.
+1.逆天操作删除链表元素:
+  递归:
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    if(head==NULL){
+        return head;
+    }
+    head->next=removeElements(head->next,val);
+    return head->val==val?head->next:head;
+}
+  虚拟头节点:
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    struct ListNode*dummynode =(struct ListNode*)malloc(sizeof(struct ListNode));
+    dummynode->next=head;
+   struct ListNode*move=dummynode;
+    while(move->next!=NULL){
+        if(move->next->val==val){
+            move->next=move->next->next;
+        }
+        else{
+            move=move->next;
+        }
+    }
+    return dummynode->next;
+}
+4.双向链表:
+struct listnode{
+int data;
+struct listnode*pre;
+struct listnode*next;
+}
+
+5.KMP(字符串匹配)
+6.二叉树求深度前序遍历,求高度后序遍历
+7.二叉树题目就是在考虑遍历,各种遍历方法,层序遍历需要队列的辅助,C语言直接模拟队列就可以轻松实现,或者以后我可以学习了高级语言后可以更容易的写出类似的东西,这周末的团建让我关机了两天,没有刷力扣,让力扣给断了.以后争取不要让力扣i断掉.
+8.图:
+()无向图;
+<>有向图;
+无向图中任意两个顶点都存在边,则为无向完全图;
+有向图,有向完全图;
+存储方式,邻接矩阵,类似于线性代数.
+9.在二叉树题目中,要始终明确节点之间的关系,不可以盲目的去写,
+
